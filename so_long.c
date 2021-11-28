@@ -50,9 +50,9 @@ int end_game(void *s)
 
 void dvig(int k, void *s)
 {
-    info *temp;
+    t_general *temp;
     temp = s;
-    
+
     if (k == 0)
         temp->x -= 15;
     if (k == 2)
@@ -64,9 +64,9 @@ void dvig(int k, void *s)
 }
 
 int key_press(int k, void *s)
-begin
+{
 
-    info *temp;
+    t_general *temp;
     temp = s;
     printf("%d\n", k);
     printf("x %d\n", temp->x);
@@ -75,48 +75,46 @@ begin
     mlx_clear_window(temp->mlx, temp->win);
     mlx_put_image_to_window(temp->mlx, temp->win, temp->pers.img, temp->x, temp->y);
     if(temp->x < 0)
-        temp->x =  0 ;
+        temp->x =  0;
     if(temp->y < 0)
-        temp->y =  0 ;
+        temp->y =  0;
     if(temp->x > 600)
-        temp->x =  600 ;
+        temp->x =  600;
     if(temp->y > 600)
-        temp->y =  600 ;
+        temp->y =  600;
     trete (1);
+}
 
-end
-
-int main(void)
+int main(int argc, char **argv)
 {
-    void    *mlx;
-    void*   win;
-    t_ptr   s1;
-    t_ptr   s2;
+    t_general s;
 
-
-    mlx = mlx_init();
-    win = mlx_new_window(mlx, 700, 700, "Lilo");
-    s1 = creat_img(mlx, 100, 100);
-    s2 = creat_img(mlx, 100, 100);
-    info    lost;
+    if (argc != 2)
+        ft_error("Error FILE\n");
+    else 
+        check_fd(argv[1], &s.map);
+    
+    return (write(1, "1\n", 2));
+    s.mlx = mlx_init();
+    s.win = mlx_new_window(s.mlx, 700, 700, "Lilo");
+    s.pers = creat_img(s.mlx, 100, 100);
+    t_general   lost;
 
     lost.x=100;
     lost.y=100;
 
-    lost.mlx = mlx;
-    lost.win = win;
+    lost.mlx = s.mlx;
+    lost.win = s.win;
     int r = 9;
     int g = 222;
     int b = 162;
     int a = 100;
-    caloris(&s1, ((a << 24) + (r << 16) + (g << 8) + b), 0); 
-    caloris(&s2, COL(222, 9, 101, 0), 0);
-    lost.pers = s1;
-    mlx_put_image_to_window(mlx, win, s2.img, 10, 10);
-    mlx_hook(win, 2, 0, key_press, &lost);
+    caloris(&s.pers, ((a << 24) + (r << 16) + (g << 8) + b), 0); 
+    lost.pers = s.pers;
+    mlx_hook(s.win, 2, 0, key_press, &lost);
 	// mlx_hook(all->win, 3, 0, key_release, all);
-	mlx_hook(win, 17, 0, end_game, NULL);
+	mlx_hook(s.win, 17, 0, end_game, NULL);
 	// mlx_loop_hook(all->mlx, move_management, all);
-	mlx_loop(mlx);
+	mlx_loop(s.mlx);
 }
 
