@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 23:48:20 by csherill          #+#    #+#             */
-/*   Updated: 2021/11/28 22:23:51 by csherill         ###   ########.fr       */
+/*   Updated: 2021/11/30 06:13:13 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-
-#define trete return
-#define COL(r, g, b, a) ((((r) & 0xff) << 16) | (((g) & 0xff) << 8) | ((b) & 0xff) | (((a) & 0xff) << 24))
+# define SIZE_X	40
+# define SIZE_Y	40
+# define trete return
+# define COL(r, g, b, a) ((((r) & 0xff) << 16) | (((g) & 0xff) << 8) | ((b) & 0xff) | (((a) & 0xff) << 24))
 
 typedef struct	s_ptr 
 {
@@ -55,7 +56,7 @@ typedef struct  s_general
 	void	*win;
 	int		x;
 	int		y;
-	t_ptr	pers;
+	t_ptr	pers[5];
 	t_map	map;
 
 }				t_general;

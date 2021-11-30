@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	valid_name(char *argv)
+static void	valid_name(char *argv)
 {
 	char *point;
 
@@ -11,7 +11,7 @@ void	valid_name(char *argv)
 	ft_error("Error FD\n");
 }
 
-int		valid_str(char *buf, int i, int *k)
+static int		valid_str(char *buf, int i, int *k)
 { 
 	int o;
 
@@ -27,7 +27,7 @@ int		valid_str(char *buf, int i, int *k)
 	return (1);
 }
 
-void	count_strings(int fd, int *height, int *width)
+static void	count_strings(int fd, int *height, int *width)
 {
 	int		i;
 	char	*buf;
@@ -80,7 +80,7 @@ void		pull_line(t_map *s, int fd, int width)
 
 void	check_fd(char *argv, void *s1)
 {
-	int		fd;
+	int		fd;	
 	t_map	*s;
 	int		i = 0;
 

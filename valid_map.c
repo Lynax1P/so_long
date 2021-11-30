@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	obj_map(t_map *map, int *i)
+static void	obj_map(t_map *map, int *i)
 {
 	int		j;
 
@@ -31,7 +31,7 @@ void	obj_map(t_map *map, int *i)
 	}
 }
 
-void	valid_obj(t_map *map)
+static void	valid_obj(t_map *map)
 {
 	int		i;
 
