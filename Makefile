@@ -39,7 +39,7 @@ $(SO_LONG_OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 			$(CC) $(CFLAGS) -c -I $(HEADER) -o $@ $<
 
 clean:
-	# @make clean -C $(MLX_DIR)
+	@make clean -C $(MLX_DIR)
 	@make clean -C $(LIBFT_DIR)
 	@make clean -C $(GNL_DIR)
 	@rm -rf $(OBJ_DIR)

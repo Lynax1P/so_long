@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 23:48:20 by csherill          #+#    #+#             */
-/*   Updated: 2021/12/09 17:12:24 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/10 01:38:25 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
-# include "../gnl/get_next_line.h"
+# include "../gnl_l/get_next_line.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
