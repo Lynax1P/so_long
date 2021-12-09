@@ -4,9 +4,9 @@ CC = gcc
 
 CFLAGS =  -O2
 
-SRC_DIR = ./
+SRC_DIR = ./src/
 
-SO_LONG_FILES = so_long.c parse_map.c valid_map.c
+SO_LONG_FILES = so_long.c parse_map.c valid_map.c engine_map.c animation_obj.c key_hook.c live_render.c
 
 OBJ_DIR = obj/
 
@@ -14,7 +14,7 @@ SO_LONG_OBJ_FILES = $(patsubst %.c,%.o,$(SO_LONG_FILES))
 
 SO_LONG_OBJ = $(addprefix $(OBJ_DIR), $(SO_LONG_OBJ_FILES))
 
-HEADER = so_long.h
+HEADER = src/so_long.h
 
 MLX_DIR = mlx
 
@@ -36,7 +36,7 @@ $(OBJ_DIR):
 			mkdir $(OBJ_DIR)
 
 $(SO_LONG_OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
-	$(CC) $(CFLAGS) -c -I $(HEADER) -o $@ $<
+			$(CC) $(CFLAGS) -c -I $(HEADER) -o $@ $<
 
 clean:
 	# @make clean -C $(MLX_DIR)
@@ -50,4 +50,3 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
-

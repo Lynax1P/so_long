@@ -1,8 +1,8 @@
-#include "so_long.h"
+#include "src/so_long.h"
 
 int main(int argc, char const *argv[])
 {
-    printf("%lu %lu %lu %lu\n", sizeof(char **), sizeof(double *), sizeof(char), sizeof(char *));
+    printf("%*.*s \n", -10, 100);
 
     int fd = open((const char *)argv[1], O_RDWR);
     printf("%d\n", fd);

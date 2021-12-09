@@ -1,29 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/08 14:10:21 by csherill          #+#    #+#             */
+/*   Updated: 2021/12/08 14:41:09 by csherill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	valid_name(char *argv)
 {
-	char *point;
+	char	*point;
 
 	point = ft_strnstr(argv, ".ber", ft_strlen(argv)+1);
-	if(point)
-		if(ft_strlen(point) == 4)
+	if (point)
+		if (ft_strlen(point) == 4)
 			return ;
 	ft_error("Error FD\n");
 }
 
-static int		valid_str(char *buf, int i, int *k)
-{ 
-	int o;
+static int	valid_str(char *buf, int i, int *k)
+{
+	int		o;
 
-	if(i == -1)
+	if (i == -1)
 		ft_error("GNL Error\n");
 	o = ft_strlen_join(buf, NULL);
-	if(o == 0)
+	if (o == 0)
 	{
 		free(buf);
 		return (0);
 	}
-	*k = o; 
+	*k = o;
 	return (1);
 }
 
@@ -39,13 +51,13 @@ static void	count_strings(int fd, int *height, int *width)
 	k = 0;
 	i = 1;
 	flag = 0;
-	while(i != 0)
+	while (i != 0)
 	{
 		temp = k;
 		i = get_next_line(fd, &buf);
-		if(!valid_str(buf, i, &k))
+		if (!valid_str(buf, i, &k))
 			continue ;
-		if(k != temp && temp!=0 && k != 0)
+		if (k != temp && temp != 0 && k != 0)
 			ft_error("Don't valid map\n");
 		(*height)++;
 		free(buf);
@@ -54,7 +66,7 @@ static void	count_strings(int fd, int *height, int *width)
 	close(fd);
 }
 
-void		pull_line(t_map *s, int fd, int width)
+void	pull_line(t_map *s, int fd, int width)
 {
 	int		i;
 	short	res;
@@ -70,7 +82,7 @@ void		pull_line(t_map *s, int fd, int width)
 		res = get_next_line(fd, &line);
 		if (res == -1)
 			ft_error("Error 2res GNL");
-		if(!valid_str(line, res, &nul))
+		if (!valid_str(line, res, &nul))
 			continue ;
 		s->map[i++] = line;
 	}
@@ -82,26 +94,22 @@ void	check_fd(char *argv, void *s1)
 {
 	int		fd;	
 	t_map	*s;
-	int		i = 0;
 
 	s = s1;
 	valid_name(argv);
 	s->height = 0;
 	s->width = 0;
 	fd = open((const char *)argv, O_RDWR);
-	if(fd < 0)
+	if (fd < 0)
 		ft_error("Error Don't open\n");
 	count_strings(fd, &s->height, &s->width);
 	s->map = malloc(sizeof(s->map) * (s->height));
+	if (!s->map)
+		ft_error("Error Malloc");
 	fd = open((const char *)argv, O_RDWR);
-	if(fd < 0)
+	if (fd < 0)
 		ft_error("Error Don't open\n");
 	printf("height - %d\nwidth - %d\n", s->height, s->width);
 	pull_line(s, fd, s->width);
-	while (s->map[i] != NULL)
-	{
-		write(1, s->map[i++], s->width);
-		write(1, "\n", 1);
-	}
 	valid_element(s);
 }

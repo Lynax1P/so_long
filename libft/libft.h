@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 23:15:26 by csherill          #+#    #+#             */
-/*   Updated: 2021/11/28 20:02:32 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:08:49 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int			ft_isprint(int c); // Print Numb
 int			ft_toupper(int c); // a >> A
 int			ft_tolower(int c); // A >> a
 
-void	ft_null_str(char **a,char **b,char **c,char ***d);
-void	ft_null_num(size_t *a,size_t *b,size_t *c,size_t *d);
+void		ft_null_str(char **a, char **b, char **c, char ***d);
+void		ft_null_num(size_t *a, size_t *b, size_t *c, size_t *d);
 
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
@@ -54,7 +54,6 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
-
 
 int			ft_atoi(const char *str);
 long long	ft_atoll(const char *str);
