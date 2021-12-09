@@ -18,7 +18,7 @@ HEADER = src/so_long.h
 
 MLX_DIR = mlx
 
-GNL_DIR = gnl
+GNL_DIR = gnl_l
 
 LIBFT_DIR = libft
 
@@ -30,7 +30,7 @@ $(NAME): $(OBJ_DIR) $(SO_LONG_OBJ)
 	@make -C $(LIBFT_DIR)
 	@make -C $(MLX_DIR)
 	@make -C $(GNL_DIR)
-	$(CC) -o $(NAME) $(SO_LONG_OBJ) libft/libft.a gnl/gnl.a mlx/libmlx.a -framework OpenGL -framework AppKit
+	$(CC) -o $(NAME) $(SO_LONG_OBJ) libft/libft.a gnl_l/gnl.a mlx/libmlx.a -framework OpenGL -framework AppKit
 
 $(OBJ_DIR): 
 			mkdir $(OBJ_DIR)
