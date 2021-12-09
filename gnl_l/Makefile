@@ -28,7 +28,7 @@ obj/%.o: $(SRC_DIR)%.c $(HEADER)
 	$(CC) $(CFLAGS) -c  -o $@ $<
 
 clean:
-	@rm -rf $(OBJ_DIR)
+	@rm -rf obj
 
 fclean: clean
 	@rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 12:52:41 by csherill          #+#    #+#             */
-/*   Updated: 2021/12/08 21:56:35 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/10 02:06:41 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,6 @@ int	key_press(int k, void *s1)
 
 	s = s1;
 	i = 0;
-	while (s->map.map[i])
-		printf("%s\n", s->map.map[i++]);
 	plav_dvig(k, s);
-	printf("x %d\n", s->slow.x);
-	printf("y %d\n", s->slow.y);
 	return (1);
 }

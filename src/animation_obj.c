@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 12:50:56 by csherill          #+#    #+#             */
-/*   Updated: 2021/12/10 01:23:27 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/10 01:50:34 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	all_animation(void *s1)
 
 	s = s1;
 	s->temp.count += 1;
+	mlx_put_image_to_window(s->mlx, s->win, s->pers[1].img, 0, 0);
+	mlx_string_put(s->mlx, s->win, 0, 10, \
+		(255 << 16) + (200 << 8) + 0, "Step:");
+	mlx_string_put(s->mlx, s->win, 34, 10, \
+		(194 << 16) + (43 << 8), s->str);
 	anim_pers(s);
 }
 

@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:47:16 by csherill          #+#    #+#             */
-/*   Updated: 2021/12/10 01:23:42 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/10 01:50:42 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,5 @@ int	real_render(void *s1)
 		ar.y += SIZE_Y;
 	}
 	all_animation(s1);
-	if (s->temp.temp == s->step)
-	{
-		s->temp.temp++;
-		mlx_put_image_to_window(s->mlx, s->win, s->pers[1].img, 0, 0);
-		mlx_string_put(s->mlx, s->win, 0, 10, \
-			(255 << 16) + (200 << 8) + 0, "Step:");
-		mlx_string_put(s->mlx, s->win, 34, 10, \
-			(194 << 16) + (43 << 8), s->str);
-	}
 	return (0);
 }

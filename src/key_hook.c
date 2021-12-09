@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:37:02 by csherill          #+#    #+#             */
-/*   Updated: 2021/12/10 01:19:54 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/10 02:04:09 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	right_l(t_general *s)
 		swap_el_mas(s, -1, 0, &s->slow.x);
 		s->slow.x = 0;
 	}
-	else if (s->flag && s->slow.right == 0 && s->slow.x < -36)
-		s->slow.x += s->slow.x;
+	else if (s->flag && s->slow.right == 0 && s->slow.x > -36)
+		s->slow.x += -s->slow.x;
 	else
 		s->slow.x += (STEP + s->flag);
 	s->anim.pers = 6;
@@ -92,8 +92,8 @@ int	down_l(t_general *s)
 		return (0);
 	else if (s->slow.y >= SIZE_Y - (STEP + s->flag))
 		swap_el_mas(s, 0, -1, &s->slow.y);
-	else if (s->flag && s->slow.top == 0 && s->slow.y < -36)
-		s->slow.y += s->slow.y;
+	else if (s->flag && s->slow.down == 0 && s->slow.y > -36)
+		s->slow.y += -s->slow.y;
 	else
 		s->slow.y += (STEP + s->flag);
 	s->anim.pers = 5;
