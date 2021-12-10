@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS =  -O2
+CFLAGS = -Wall -Wextra -Werror -O2
 
 SRC_DIR = ./src/
 

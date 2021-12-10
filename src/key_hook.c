@@ -6,7 +6,7 @@
 /*   By: csherill <csherill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:37:02 by csherill          #+#    #+#             */
-/*   Updated: 2021/12/10 02:04:09 by csherill         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:03:38 by csherill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	swap_el_mas(t_general *s, int x, int y, int *nul)
 }
 
 int	left_l(t_general *s)
-{
+{	
 	if ((s->slow.horizon[3] == 1 && s->slow.y < 0 && s->slow.x == 0) || \
 	(s->slow.horizon[2] == 1 && s->slow.y > 0 && s->slow.x == 0))
 		return (0);
@@ -48,6 +48,12 @@ int	left_l(t_general *s)
 		s->slow.x -= s->slow.x;
 	else
 		s->slow.x -= (STEP + s->flag);
+	if ((s->map.map[s->map.pers_y][s->map.pers_x - 1] == 'V' && \
+			s->slow.x < -10) || (s->map.map[s->map.pers_y - 1]
+			[s->map.pers_x - 1] == 'V' && s->slow.x < -10 && s->slow.y < -10) ||
+			(s->map.map[s->map.pers_y + 1][s->map.pers_x - 1] == 'V' &&
+			s->slow.x < 0 && s->slow.y > 10))
+		ft_error("Dead");
 	s->anim.pers = 6;
 	return (1);
 }
@@ -66,6 +72,12 @@ int	right_l(t_general *s)
 		s->slow.x += -s->slow.x;
 	else
 		s->slow.x += (STEP + s->flag);
+	if ((s->map.map[s->map.pers_y][s->map.pers_x + 1] == 'V' && \
+			s->slow.x > 5) || (s->map.map[s->map.pers_y - 1]
+			[s->map.pers_x + 1] == 'V' && s->slow.x > 5 && s->slow.y < -10) ||
+			(s->map.map[s->map.pers_y + 1][s->map.pers_x + 1] == 'V' &&
+			s->slow.x > 5 && s->slow.y > 10))
+		ft_error("Dead");
 	s->anim.pers = 6;
 	return (1);
 }
@@ -81,6 +93,12 @@ int	up_l(t_general *s)
 		s->slow.y -= s->slow.y;
 	else
 		s->slow.y -= (STEP + s->flag);
+	if ((s->map.map[s->map.pers_y - 1][s->map.pers_x] == 'V' && \
+			s->slow.y < -10) || (s->map.map[s->map.pers_y - 1]
+			[s->map.pers_x + 1] == 'V' && s->slow.x > 10 && s->slow.y < -10) ||
+			(s->map.map[s->map.pers_y - 1][s->map.pers_x - 1] == 'V' &&
+			s->slow.x < -10 && s->slow.y < -10))
+		ft_error("Dead");
 	s->anim.pers = 5;
 	return (1);
 }
@@ -96,6 +114,12 @@ int	down_l(t_general *s)
 		s->slow.y += -s->slow.y;
 	else
 		s->slow.y += (STEP + s->flag);
+	if ((s->map.map[s->map.pers_y + 1][s->map.pers_x] == 'V' && \
+			s->slow.y > 10) || (s->map.map[s->map.pers_y + 1]
+			[s->map.pers_x + 1] == 'V' && s->slow.x > 10 && s->slow.y > 10) ||
+			(s->map.map[s->map.pers_y + 1][s->map.pers_x - 1] == 'V' &&
+			s->slow.x < -10 && s->slow.y > 10))
+		ft_error("Dead");
 	s->anim.pers = 5;
 	return (1);
 }
